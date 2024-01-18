@@ -9,7 +9,7 @@ def read_requirements():
 
 setup(
     name='stevools',
-    version='0.0.1',
+    version='0.0.2',
     packages=find_packages(exclude=['test', 'test.*']),
     include_package_data=True,
     install_requires=read_requirements(),
