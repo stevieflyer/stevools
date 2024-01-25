@@ -54,7 +54,25 @@ def generate_random_id(prefix: Optional[str] = None, maximum_length: int = 12) -
         return f"{prefix}-{random_id}"
     return random_id
 
+def get_hash_id(d: dict) -> str:
+    """Get a unique hash id for a serializable object
+    
+    Args:
+        obj (Serializable): The object to hash
+
+    Returns:
+        str: The unique hash id
+    """
+    import json
+    import hashlib
+    json_str = json.dumps(d, sort_keys=True)
+    hash_object = hashlib.md5(json_str.encode())
+    hash_id = hash_object.hexdigest()
+    return hash_id
+
+
 __all__ = [
+    'get_hash_id',
     'wrap_content',
     'generate_random_id',
     'remove_special_lines',
